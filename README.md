@@ -15,3 +15,5 @@ Recuerden que la estructura siempre debe ser:
 > - SemXEjeY+NombreUsuario.py
 > - SemXDesY+NombreUsuario.py
 > 
+
+**NOTA:** Cualquier problema favor de comentar [Aqui](https://plus.google.com/u/0/110110826748221909941/posts/1ajPYFcvoqY)
