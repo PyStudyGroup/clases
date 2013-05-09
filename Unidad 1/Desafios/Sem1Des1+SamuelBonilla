@@ -1,0 +1,69 @@
+# -*- coding: utf-8 -*-
+
+
+###############################################################################
+# python 3.3 - Tutorial avanzado de python
+# Copyright (C) 2013  Samuel Bonilla <pythonners@gmail.com>
+
+# License: LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+
+#twitter@sambonill
+###############################################################################
+
+
+import datetime
+
+
+class CalcularEdad(object):
+
+    def __init__(self, cumple):
+        self.year, self.month, self.day = (
+            int(x) for x in cumple.split('-'))
+
+    def calcular_edad(self, date):
+        year, month, day = (
+            int(x) for x in date.split('-'))
+        edad = year - self.year
+        if (month, day) < (self.month, self.day):
+            edad -= 1
+        return edad
+
+
+class AdaptadorFecha(object):
+
+    def _str_fecha(self, date):
+        return date.strftime('%Y-%m-%d')
+
+    def __init__(self, cumple):
+        cumple = self._str_fecha(cumple)
+        self.calcular = CalcularEdad(cumple)
+
+    def optener_edad(self, date):
+        date = self._str_fecha(date)
+        return self.calcular.calcular_edad(date)
+
+
+class EdadFecha(datetime.date):
+
+    def split(self, char):
+        return self.year, self.month, self.day
+
+#comado bash: python3.3 -i edad.py
+'''
+>>> db = EdadFecha(1992, 4, 25)  # tu año de nacimiento mes y dia
+>>> hoy = EdadFecha.today()
+>>> hoy      #la fecha actual
+EdadFecha(2013, 4, 22)
+>>> a = CalcularEdad(db)  #calcula tu edad
+>>> a.calcular_edad(hoy)  # te dice cuantos años tienes
+20
+>>>
+'''
+
+# SLUDOS att: twitter@sambonill
+
+
+
+
+
+
