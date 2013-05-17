@@ -21,6 +21,7 @@ def ordenar(datos):
       without_x.append(item)
       
   without_x = sorted(without_x)
+  with_x = sorted(with_x)
   return with_x + without_x 
 
 if __name__=="__main__":
