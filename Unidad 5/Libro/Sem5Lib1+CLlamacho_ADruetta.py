@@ -21,7 +21,7 @@ def main():
     
     while True:
                 
-        if opcion >= 1 and opcion <= 4:
+        if opcion >= 1 and opcion <= 4:     # Alternativa: if opcion in "1234":
             break
         else:
             opcion = int(raw_input("Opción incorrecta, intente nuevamente: "))
