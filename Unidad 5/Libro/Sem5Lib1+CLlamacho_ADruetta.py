@@ -43,7 +43,7 @@ def ciclo_interactivo():
         print "-"*50
         horas = int(raw_input("Horas de la llamada #{0}? ".format(cant_llamadas)))
         minutos = int(raw_input("Minutos de la llamada #{0}? ".format(cant_llamadas)))
-        segundos = int(raw_input("Segundos de la llamada#{0}? ".format(cant_llamadas)))
+        segundos = int(raw_input("Segundos de la llamada #{0}? ".format(cant_llamadas)))
         print "*"*20
         print "Su costo de llamada es de ${0}.".format(calcular_tarifa(horas, minutos, segundos))    
         print "-"*50
