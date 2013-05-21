@@ -26,7 +26,7 @@ def main():
         else:
             opcion = raw_input("Opción incorrecta, intente nuevamente: ")
     
-    tarifa = float(raw_input("¿Cuánto cuesta un segundo de comunicación?: "))
+    tarifa = float(raw_input("¿Cuánto cuesta un segundo de comunicación? (euros): "))
     
     if opcion == "1":
         ciclo_definido(tarifa)
@@ -75,6 +75,20 @@ def ciclo_centinela(tarifa):
         centinela = centinela.lower()
         
         llamada += 1
+
+def ciclo_infinito(tarifa):
+    """Facturar el uso de un telefono usando un ciclo infinito que se interrumpe."""
+    
+    llamada = 0
+    
+    while True:
+        
+        calculo(llamada, tarifa)
+        
+        continuar = str(raw_input("Tiene más llamadas que facturar? (Si/No): "))
+        llamada += 1
+        if continuar == "No":
+            break
 
 def calculo(llamada, tarifa):
     """Calcula la tarifa e imprime el resultado."""
