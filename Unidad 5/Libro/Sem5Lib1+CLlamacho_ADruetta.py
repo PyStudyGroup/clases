@@ -11,13 +11,14 @@ def main():
     
     # Menú de procedimientos:
              
-    print "Procedimientos:"
+    print "Procedimientos:\n"
     print "1. Ciclo deﬁnido."
     print "2. Ciclo interactivo."
     print "3. Ciclo con centinela."
-    print "4. Ciclo 'inﬁnito' que se rompe."
+    print "4. Ciclo 'inﬁnito' que se rompe.\n"
 
     opcion = raw_input("Elija un procedimiento (1-4): ")
+    print
 
     while True:
         
@@ -26,6 +27,7 @@ def main():
         else:
             opcion = raw_input("Opción incorrecta, intente nuevamente: ")
     
+    print "-" * 79
     tarifa = float(raw_input("¿Cuánto cuesta un segundo de comunicación? (euros): "))
     
     if opcion == "1":
@@ -41,6 +43,7 @@ def ciclo_definido(tarifa):
     """Facturar el uso de un telefono usando un ciclo definido."""
     
     llamadas = int(raw_input("¿Cuántas llamadas se realizaron?: "))
+    print "-" * 79
     
     for llamada in range(llamadas):
         calculo(llamada, tarifa)
@@ -93,7 +96,7 @@ def ciclo_infinito(tarifa):
 def calculo(llamada, tarifa):
     """Calcula la tarifa e imprime el resultado."""
     
-    print "Llamada %d:" % (llamada + 1)
+    print ">>> Llamada %d <<<" % (llamada + 1)
     hs = int(raw_input("¿Cuántas horas?: "))
     ms = int(raw_input("¿Cuántos minutos?: " ))
     ss = int(raw_input("¿Cuántos segundos?: "))
@@ -101,7 +104,9 @@ def calculo(llamada, tarifa):
     segundos = asegundos(hs, ms, ss)
     coste = segundos * tarifa
     
-    print "La llamada duró %d segundos y costó %4.2f euros." % (segundos, coste)        
+    print "-" * 79
+    print "La llamada duró %d segundos y costó %4.2f euros." % (segundos, coste)  
+    print "-" * 79      
         
 def asegundos(horas, minutos, segundos):
     """Convierte a segundos el valor ingresado en horas, minutos y segundos."""
