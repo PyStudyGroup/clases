@@ -38,6 +38,7 @@ def main():
         ciclo_infinito(tarifa)
             
 def ciclo_definido(tarifa):
+    """Facturar el uso de un telefono usando un ciclo definido."""
     
     llamadas = int(raw_input("¿Cuántas llamadas se realizaron?: "))
     
@@ -61,6 +62,7 @@ def ciclo_interactivo(tarifa):
             llamadas = False
 
 def ciclo_centinela(tarifa):
+    """Facturar el uso de un telefono usando un ciclo con centinela."""
     
     llamada = 1
     centinela = ""
@@ -75,6 +77,7 @@ def ciclo_centinela(tarifa):
         llamada += 1
 
 def calculo(llamada, tarifa):
+    """Calcula la tarifa e imprime el resultado."""
     
     print "Llamada %d:" % (llamada + 1)
     hs = int(raw_input("¿Cuántas horas?: "))
@@ -87,6 +90,8 @@ def calculo(llamada, tarifa):
     print "La llamada duró %d segundos y costó %4.2f euros." % (segundos, coste)        
         
 def asegundos(horas, minutos, segundos):
+    """Convierte a segundos el valor ingresado en horas, minutos y segundos."""
+    
     segsal = 3600 * horas + 60 * minutos + segundos
     return segsal
 
