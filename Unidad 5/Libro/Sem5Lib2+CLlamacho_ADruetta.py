@@ -42,11 +42,14 @@ def main():
 def ciclo_definido(tarifa):
     """Facturar el uso de un telefono usando un ciclo definido."""
     
-    llamadas = int(raw_input("¿Cuántas llamadas se realizaron?: "))
+    total_facturado = 0
+    cant_llamadas = int(raw_input("¿Cuántas llamadas se realizaron?: "))
     print "-" * 79
     
-    for llamada in range(llamadas):
-        calculo(llamada, tarifa)
+    for llamada in range(cant_llamadas):
+        total_facturado += calculo(llamada, tarifa)
+    
+    informe(cant_llamadas, total_facturado)
         
 def ciclo_interactivo(tarifa):
     """Facturar el uso de un telefono usando un ciclo interactivo."""
@@ -59,26 +62,30 @@ def ciclo_interactivo(tarifa):
         
         total_facturado += calculo(cant_llamadas, tarifa)
         cant_llamadas += 1
-        continuar = str(raw_input("Tiene más llamadas que facturar? (Si/No): "))
-        if continuar == "No":
+        continuar = raw_input("Tiene más llamadas que facturar? (Si/No): ")
+        continuar = continuar.lower()
+        if continuar == "no":
             llamadas = False
     
-    print "Usted ha realizado un total de {0} llamadas con un valor de {1} euros.".format(cant_llamadas, total_facturado)
+    informe(cant_llamadas, total_facturado)
 
 def ciclo_centinela(tarifa):
     """Facturar el uso de un telefono usando un ciclo con centinela."""
     
-    llamada = 1
+    cant_llamadas = 0
     centinela = ""
+    total_facturado = 0
         
     while centinela != "s":
         
-        calculo(llamada, tarifa)
+        total_facturado += calculo(cant_llamadas, tarifa)
         
-        centinela = raw_input("Presione 'Enter' para continuar, 's' para salir: ")
+        centinela = raw_input("Presione 'Enter' para continuar, 'S' para salir: ")
         centinela = centinela.lower()
         
-        llamada += 1
+        cant_llamadas += 1
+        
+    informe(cant_llamadas, total_facturado)
 
 def ciclo_infinito(tarifa):
     """Facturar el uso de un telefono usando un ciclo infinito que se interrumpe."""
@@ -89,17 +96,18 @@ def ciclo_infinito(tarifa):
         
         total_facturado += calculo(cant_llamadas, tarifa)
         
-        continuar = str(raw_input("Tiene más llamadas que facturar? (Si/No): "))
+        continuar = raw_input("Tiene más llamadas que facturar? (Si/No): ")
+        continuar = continuar.lower()
         cant_llamadas += 1
-        if continuar == "No":
+        if continuar == "no":
             break
     
-    print "Usted ha realizado un total de {0} llamadas con un valor de {1} euros.".format(cant_llamadas, total_facturado)
+    informe(cant_llamadas, total_facturado)
 
-def calculo(llamada, tarifa):
+def calculo(cant_llamadas, tarifa):
     """Calcula la tarifa e imprime el resultado."""
     
-    print ">>> Llamada %d <<<" % (llamada + 1)
+    print ">>> Llamada %d <<<" % (cant_llamadas + 1)
     hs = int(raw_input("¿Cuántas horas?: "))
     ms = int(raw_input("¿Cuántos minutos?: " ))
     ss = int(raw_input("¿Cuántos segundos?: "))
@@ -108,10 +116,31 @@ def calculo(llamada, tarifa):
     coste = segundos * tarifa
     
     print "-" * 79
-    print "La llamada duró %d segundos y costó %4.2f euros." % (segundos, coste)  
+    print "La llamada duró {0} segundos y costó {1} euros.".format(segundos, coste)  
     print "-" * 79
 
-    return coste      
+    return coste
+    
+def informe(cant_llamadas, total_facturado):
+    
+    # Mensaje con marco:
+    
+    mensaje = " Usted ha realizado un total de {0} llamadas con un valor de {1} euros. ".format(cant_llamadas, total_facturado)
+    espacios = 79 - len(mensaje)
+    if espacios % 2 == 0:
+        espacio_ini = espacios / 2
+        espacio_fin = espacio_ini
+    else:
+        espacio_ini = espacios // 2
+        espacio_fin = espacios // 2 + espacios % 2
+    
+    print
+    print "*" * 79
+    print ("*" * espacio_ini) + mensaje + ("*" * espacio_fin)
+    print "*" * 79
+    
+    # Mensaje simple:
+    # print "Usted ha realizado un total de {0} llamadas con un valor de {1} euros.".format(cant_llamadas, total_facturado)
         
 def asegundos(horas, minutos, segundos):
     """Convierte a segundos el valor ingresado en horas, minutos y segundos."""
