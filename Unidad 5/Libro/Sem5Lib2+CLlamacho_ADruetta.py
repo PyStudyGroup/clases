@@ -6,6 +6,8 @@ Semana 5 - Ejercicio 5.2 del Libro
 Autores:    Carlos Llamacho y Alejandro Druetta
 Fecha:      21/05/13
 """
+#Esta funcion termina el flujo del programa.
+from sys import exit
 
 def main():
     
@@ -15,17 +17,21 @@ def main():
     print "1. Ciclo deﬁnido."
     print "2. Ciclo interactivo."
     print "3. Ciclo con centinela."
-    print "4. Ciclo 'inﬁnito' que se rompe.\n"
+    print "4. Ciclo 'inﬁnito' que se rompe."
+    print "5. Salir.\n"
 
-    opcion = raw_input("Elija un procedimiento (1-4): ")
+    opcion = raw_input("Elija un procedimiento (1-5): ")
     print
 
     while True:
         
-        if opcion in "1234":
+        if opcion in "12345":
             break
         else:
             opcion = raw_input("Opción incorrecta, intente nuevamente: ")
+    
+    if opcion == "5":
+        exit()
     
     print "-" * 79
     tarifa = float(raw_input("¿Cuánto cuesta un segundo de comunicación? (euros): "))
@@ -38,6 +44,7 @@ def main():
         ciclo_centinela(tarifa)
     elif opcion == "4":
         ciclo_infinito(tarifa)
+    
             
 def ciclo_definido(tarifa):
     """Facturar el uso de un telefono usando un ciclo definido."""
@@ -50,6 +57,7 @@ def ciclo_definido(tarifa):
         total_facturado += calculo(llamada, tarifa)
     
     informe(cant_llamadas, total_facturado)
+    main()
         
 def ciclo_interactivo(tarifa):
     """Facturar el uso de un telefono usando un ciclo interactivo."""
@@ -68,6 +76,7 @@ def ciclo_interactivo(tarifa):
             llamadas = False
     
     informe(cant_llamadas, total_facturado)
+    main()
 
 def ciclo_centinela(tarifa):
     """Facturar el uso de un telefono usando un ciclo con centinela."""
@@ -86,7 +95,9 @@ def ciclo_centinela(tarifa):
         cant_llamadas += 1
         
     informe(cant_llamadas, total_facturado)
-
+    main()
+        
+    
 def ciclo_infinito(tarifa):
     """Facturar el uso de un telefono usando un ciclo infinito que se interrumpe."""
     
@@ -103,6 +114,7 @@ def ciclo_infinito(tarifa):
             break
     
     informe(cant_llamadas, total_facturado)
+    main()
 
 def calculo(cant_llamadas, tarifa):
     """Calcula la tarifa e imprime el resultado."""
