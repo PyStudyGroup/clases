@@ -10,7 +10,8 @@ def main():
     impar = int(raw_input("Escriba un número impar mayor que 5: "))
     print
     primos = listar_primos(impar)
-    print "Números primos entre 2 y %d:" % impar, primos
+    print "Números primos entre 2 y %d:" % impar, "\n"
+    print primos, "\n"
     
     triadas = []
        
@@ -23,7 +24,7 @@ def main():
                     if triada_ordenada not in triadas:      # Si no se repite, la agrega a la lista.
                         triadas.append(triada_ordenada)
     
-    print
+    print "Combinaciones posibles: \n"
     for i in range(len(triadas)):
         for ii in range(3):
             print triadas[i][ii] ,
