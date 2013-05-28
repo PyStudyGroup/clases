@@ -17,8 +17,9 @@ nulo, 1 o -1.
 Ejemplo 1:
 ----------
 
->123456789012       Esta marca sirve para ayudar al usuario al momento
->|          |       de ingresar los patrones.
+>Esta marca sirve para ayudar al usuario al momento de ingresar los patrones.
+>"123456789012"
+>"|          |"
 
 <!-- language: lang-bash -->
 
@@ -34,7 +35,7 @@ Ejemplo 1:
     Introduzca el diseño de la capa 1:
     123456789012
     |          |
-    \\\\        
+    \\\\
     ¿Cuál será el desplazamiento de esta capa (-1, 0, 1)?: 1
 
     Introduzca el diseño de la capa 2:
@@ -87,7 +88,7 @@ Ejemplo 2:
     Introduzca el diseño de la capa 1:
     123456789012345
     |             |
-    \\\            
+    \\\
     ¿Cuál será el desplazamiento de esta capa (-1, 0, 1)?: 1
 
     Introduzca el diseño de la capa 2:
@@ -140,7 +141,7 @@ Ejemplo 3:
     Introduzca el diseño de la capa 0:
     123456789012345
     |             |
-    \ \ \ \        
+    \ \ \ \
     ¿Cuál será el desplazamiento de esta capa (-1, 0, 1)?: 1
     
     Introduzca el diseño de la capa 1:
@@ -153,11 +154,11 @@ Ejemplo 3:
     
     \ \ \ \ / / / /
      \ \ \ / / / / 
-      \ \ / / / /  
-       \ / / / /   
+      \ \ / / / /
+       \ / / / /
         / / / /    
-       / / / / \   
-      / / / / \ \  
+       / / / / \
+      / / / / \ \
      / / / / \ \ \ 
     / / / / \ \ \ \
     \/ / /   \ \ \/
@@ -168,10 +169,10 @@ Ejemplo 3:
     /\ \ \   / / /\
     \ \ \ \ / / / /
      \ \ \ / / / / 
-      \ \ / / / /  
-       \ / / / /   
+      \ \ / / / /
+       \ / / / /
         / / / /    
-       / / / / \   
-      / / / / \ \  
+       / / / / \
+      / / / / \ \
      / / / / \ \ \ 
     / / / / \ \ \ \
