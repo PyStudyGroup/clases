@@ -1,8 +1,8 @@
 Desafíos Semana 7
 =================
 
-Desafío 1
----------
+Desafío 1 (Colaborativo)
+------------------------
 
 Desarrollar un programa al que le ingresemos las líneas de un código en 
 python y verifique si la indentación es correcta, y si no, que nos díga 
