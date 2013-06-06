@@ -12,8 +12,8 @@ Recuerden que la estructura siempre debe ser:
 
 > Mantengan la nomenclatura para nombrar sus archivos.py
 > 
-> - SemXEjeY+NombreUsuario.py
-> - SemXDesY+NombreUsuario.py
+> - SemXEjeY_NombreUsuario.py
+> - SemXDesY_NombreUsuario.py
 > 
 
 **NOTA:** Cualquier problema favor de comentar [Aqui](https://plus.google.com/u/0/110110826748221909941/posts/1ajPYFcvoqY), recuerda que debes ser parte de la comunidad para poder realizar el comentario.
