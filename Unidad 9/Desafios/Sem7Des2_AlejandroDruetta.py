@@ -2,12 +2,12 @@
 
 def menu_principal(diccionario):
 
+    import os
     registro = 0
     campos = ("Nombre", "Edad", "Teléfono", "E-mail", "Localidad")
 
     while True:
 
-        import os
         os.system('clear')  # Limpia la pantalla.
 
         if diccionario == {}:
