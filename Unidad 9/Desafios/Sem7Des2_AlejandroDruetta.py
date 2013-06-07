@@ -22,11 +22,12 @@ def menu_principal(diccionario):
     5. Listados
     6. Salir
     """)
-            opcion = str(input("Digite una opción (1-6): "))
+            opcion = input("Digite una opción (1-6): ")
 
         while opcion not in "123456":
-            opcion = str(input("\nError: Opción inexistente. \nPor favor, \
-ingrese una opción válida del menú: "))
+            opcion = input("""
+Error: Opción inexistente.
+Por favor, ingrese una opción válida del menú: """)
 
         if opcion == "1":
             diccionario, registro = agregar(diccionario, registro)
@@ -51,20 +52,20 @@ def agregar(diccionario, registro):
     while True:
         registro += 1
 
-        print("\n*** Ingrese los campos del alumno registro N° %d ***\n" \
+        print("\n*** Ingrese los campos del alumno registro N° %d ***\n"
               % registro)
 
-        apellido = str(input("    Apellido: \t"))
-        nombre = str(input("    Nombre: \t"))
-        edad = str(input("    Edad: \t"))
-        telefono = str(input("    Teléfono: \t"))
-        email = str(input("    E-mail: \t"))
-        localidad = str(input("    Localidad: \t"))
+        apellido = input("    Apellido: \t")
+        nombre = input("    Nombre: \t")
+        edad = input("    Edad: \t")
+        telefono = input("    Teléfono: \t")
+        email = input("    E-mail: \t")
+        localidad = input("    Localidad: \t")
 
         diccionario[str(registro)] = [apellido + ", " + nombre, edad, telefono,
                                       email, localidad]
 
-        opcion = str(input("\n¿Ingresa más alumnos (S/N)?: ")).lower()
+        opcion = input("\n¿Ingresa más alumnos (S/N)?: ").lower()
         if opcion != "s":
             break
 
@@ -76,12 +77,13 @@ def buscar(diccionario, campos):
         Recibe el diccionario y una tupla con los nombres de los campos
         y devuelve el número de código. """
 
-    registro = str(input("\nIngrese el código del alumno ('0' para salir): "))
+    registro = input("\nIngrese el código del alumno ('0' para salir): ")
 
     # Si no está en el diccionario da error.
     while registro not in diccionario:
-        registro = str(input("\nError: El código todavía no existe. \nIngrese \
-nuevamente: "))
+        registro = input("""
+Error: El código todavía no existe.
+Ingrese nuevamente: """)
 
     # Muestra los datos del alumno.
     visualizar(diccionario, registro, campos)
@@ -109,9 +111,10 @@ def corregir(diccionario, campos):
 
     if campo in range(1, 7):
         diccionario[registro][campo-1] = input("\n%s: " % campos[campo-1])
+
     visualizar(diccionario, registro, campos)
 
-    print("\nCorregido el campo '%s' del registro N° %s." % (campos[campo-1], \
+    print("\nCorregido el campo '%s' del registro N° %s." % (campos[campo-1],
           registro))
     input("\n")
     return diccionario
@@ -122,7 +125,7 @@ def eliminar(diccionario, campos):
         código de inscripción. Devuelve el diccionario actualizado. """
 
     registro = buscar(diccionario, campos)
-    confirma = str(input("\n¿Está seguro (S/N)?: ")).lower()
+    confirma = input("\n¿Está seguro (S/N)?: ").lower()
 
     if confirma == "s":
         diccionario.pop(registro)
