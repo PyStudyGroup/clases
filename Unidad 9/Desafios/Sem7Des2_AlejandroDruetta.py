@@ -80,10 +80,12 @@ def buscar(diccionario, campos):
     registro = input("\nIngrese el código del alumno ('0' para salir): ")
 
     # Si no está en el diccionario da error.
-    while registro not in diccionario:
+    try:
+        diccionario[registro]
+    except KeyError:
         registro = input("""
-Error: El código todavía no existe.
-Ingrese nuevamente: """)
+#Error: El código todavía no existe.
+#Ingrese nuevamente: """)
 
     # Muestra los datos del alumno.
     visualizar(diccionario, registro, campos)
