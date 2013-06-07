@@ -1,10 +1,22 @@
 #! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Nombre:       Sem7Des2_AlejandroDruetta.py
+# Fecha:        05/06/13
+# Autor:        Alejandro Druetta
+
+""" Administrar una lista de inscriptos a un curso.
+
+    El programa nos permite ingresar los datos del alumno, realizar
+    búsquedas, informes, corregir datos y eliminar registros. """
+
+import os
+
+campos = ("Nombre", "Edad", "Teléfono", "E-mail", "Localidad")
 
 def menu_principal(diccionario):
 
-    import os
     registro = 0
-    campos = ("Nombre", "Edad", "Teléfono", "E-mail", "Localidad")
 
     while True:
 
@@ -32,14 +44,14 @@ Por favor, ingrese una opción válida del menú: """)
         if opcion == "1":
             diccionario, registro = agregar(diccionario, registro)
         elif opcion == "2":
-            registro = buscar(diccionario, campos)
+            registro = buscar(diccionario)
             input("\n")
         elif opcion == "3":
-            diccionario = corregir(diccionario, campos)
+            diccionario = corregir(diccionario)
         elif opcion == "4":
-            diccionario = eliminar(diccionario, campos)
+            diccionario = eliminar(diccionario)
         elif opcion == "5":
-            listar(diccionario, campos)
+            listar(diccionario)
         else:
             print("\nFinalizado.\n")
             break
@@ -72,7 +84,7 @@ def agregar(diccionario, registro):
     return diccionario, registro
 
 
-def buscar(diccionario, campos):
+def buscar(diccionario):
     """ Busca los datos de un alumno según el código de inscripción.
         Recibe el diccionario y una tupla con los nombres de los campos
         y devuelve el número de código. """
@@ -80,20 +92,18 @@ def buscar(diccionario, campos):
     registro = input("\nIngrese el código del alumno ('0' para salir): ")
 
     # Si no está en el diccionario da error.
-    try:
-        diccionario[registro]
-    except KeyError:
+    while registro not in diccionario:
         registro = input("""
 #Error: El código todavía no existe.
 #Ingrese nuevamente: """)
 
     # Muestra los datos del alumno.
-    visualizar(diccionario, registro, campos)
+    visualizar(diccionario, registro)
 
     return registro
 
 
-def visualizar(diccionario, registro, campos):
+def visualizar(diccionario, registro):
     """ Muestra los datos de un alumno. Recibe el diccionario, el código del
         alumno y el nombre de los campos. Imprime en pantalla. """
 
@@ -103,9 +113,9 @@ def visualizar(diccionario, registro, campos):
         print("%d. %s: \t%s" % (i+1, campos[i], diccionario[registro][i]))
 
 
-def corregir(diccionario, campos):
+def corregir(diccionario):
 
-    registro = buscar(diccionario, campos)
+    registro = buscar(diccionario)
     campo = int(input("\n¿Qué campo desea modificar (1-6) '0' para Guardar: "))
 
     while campo not in range(7):
@@ -114,7 +124,7 @@ def corregir(diccionario, campos):
     if campo in range(1, 7):
         diccionario[registro][campo-1] = input("\n%s: " % campos[campo-1])
 
-    visualizar(diccionario, registro, campos)
+    visualizar(diccionario, registro)
 
     print("\nCorregido el campo '%s' del registro N° %s." % (campos[campo-1],
           registro))
@@ -122,11 +132,11 @@ def corregir(diccionario, campos):
     return diccionario
 
 
-def eliminar(diccionario, campos):
+def eliminar(diccionario):
     """ Elimina el registro de un alumno según la búsqueda que hace por el
         código de inscripción. Devuelve el diccionario actualizado. """
 
-    registro = buscar(diccionario, campos)
+    registro = buscar(diccionario)
     confirma = input("\n¿Está seguro (S/N)?: ").lower()
 
     if confirma == "s":
@@ -138,7 +148,7 @@ def eliminar(diccionario, campos):
     return diccionario
 
 
-def listar(diccionario, campos):
+def listar(diccionario):
     """ Imprime un listado en pantalla del registro de inscriptos al curso. """
 
     campos_len = (23, 5, 12, 23, 12)
