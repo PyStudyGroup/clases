@@ -10,6 +10,7 @@
     El programa nos permite ingresar los datos del alumno, realizar
     búsquedas, informes, corregir datos y eliminar registros. """
 
+from textwrap import dedent
 import os
 
 campos = ("Nombre", "Edad", "Teléfono", "E-mail", "Localidad")
@@ -37,9 +38,9 @@ def menu_principal(diccionario):
             opcion = input("Digite una opción (1-6): ")
 
         while opcion not in "123456":
-            opcion = input("""
-Error: Opción inexistente.
-Por favor, ingrese una opción válida del menú: """)
+            opcion = input(dedent("\nError: Opción inexistente.\n"
+                                  "Por favor, ingrese una opción válida del "
+                                  "menú: "))
 
         if opcion == "1":
             diccionario, registro = agregar(diccionario, registro)
@@ -55,7 +56,6 @@ Por favor, ingrese una opción válida del menú: """)
         else:
             print("\nFinalizado.\n")
             break
-
 
 def agregar(diccionario, registro):
     """ Agrega los datos del alumno al diccionario. Recibe el diccionario y
@@ -83,7 +83,6 @@ def agregar(diccionario, registro):
 
     return diccionario, registro
 
-
 def buscar(diccionario):
     """ Busca los datos de un alumno según el código de inscripción.
         Recibe el diccionario y una tupla con los nombres de los campos
@@ -93,15 +92,13 @@ def buscar(diccionario):
 
     # Si no está en el diccionario da error.
     while registro not in diccionario:
-        registro = input("""
-#Error: El código todavía no existe.
-#Ingrese nuevamente: """)
+        registro = input(dedent("""\nError: El código todavía no existe.
+                                Ingrese nuevamente: """))
 
     # Muestra los datos del alumno.
     visualizar(diccionario, registro)
 
     return registro
-
 
 def visualizar(diccionario, registro):
     """ Muestra los datos de un alumno. Recibe el diccionario, el código del
@@ -111,7 +108,6 @@ def visualizar(diccionario, registro):
 
     for i in range(5):
         print("%d. %s: \t%s" % (i+1, campos[i], diccionario[registro][i]))
-
 
 def corregir(diccionario):
 
@@ -131,7 +127,6 @@ def corregir(diccionario):
     input("\n")
     return diccionario
 
-
 def eliminar(diccionario):
     """ Elimina el registro de un alumno según la búsqueda que hace por el
         código de inscripción. Devuelve el diccionario actualizado. """
@@ -146,7 +141,6 @@ def eliminar(diccionario):
         input("\nEl registro del alumno no será eliminado.")
 
     return diccionario
-
 
 def listar(diccionario):
     """ Imprime un listado en pantalla del registro de inscriptos al curso. """
@@ -168,7 +162,6 @@ def listar(diccionario):
             posicion += 1
 
     input()
-
 
 def main():
 
