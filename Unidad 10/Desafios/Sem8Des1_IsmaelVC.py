@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-from subprocess import call
 import sys
+
+from subprocess import call
 from textwrap import dedent as dd
 from time import sleep
 
