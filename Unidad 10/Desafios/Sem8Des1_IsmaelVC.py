@@ -71,7 +71,7 @@ def segunda_validacion(cadena):
     try:
         float(cadena)
     except ValueError:
-        print('\nHumanProcessorError: Falso positivo en la primera validacion.\n')
+        print("\nHumanProcessorError: Falso positivo en la primera validacion: '{cadena}'\n".format_map(vars()))
         print(eval(error))
     else:
         print("\nLa cadena: '{cadena}', es una expresion valida, para numeros flotantes.".format_map(vars()))
