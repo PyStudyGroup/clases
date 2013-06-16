@@ -5,8 +5,6 @@ import re
 import subprocess
 import sys
 
-from time import sleep
-
 from textwrap import dedent as dd
 
 
@@ -62,6 +60,18 @@ def primera_validacion(cadena):
         return cadena
     coincidencia = patron.search(cadena)
     if coincidencia:
+        _coincidencia = coincidencia.groups()
+        print(dd('''
+                 coincidencia: {_coincidencia}
+
+                 signo     : {_coincidencia[0]}
+                 entero    : {_coincidencia[1]}
+                 punto     : {_coincidencia[2]}
+                 decimal   : {_coincidencia[3]}
+                 marca_exp : {_coincidencia[4]}
+                 signo_exp : {_coincidencia[5]}
+                 exponente : {_coincidencia[6]}
+                 '''.format_map(vars())))
         return coincidencia.group()
     else:
         print(eval(error))
@@ -71,7 +81,7 @@ def segunda_validacion(cadena):
     try:
         float(cadena)
     except ValueError:
-        print("\nHumanProcessorError: Falso positivo en la primera validacion: '{cadena}'\n".format_map(vars()))
+        print("\nHumanProcessorError: Falso positivo en la primera validacion: '{cadena}'.\n".format_map(vars()))
         print(eval(error))
     else:
         print("\nLa cadena: '{cadena}', es una expresion valida, para numeros flotantes.".format_map(vars()))
@@ -91,7 +101,8 @@ def main():
             prueba = primera_validacion(cadena_in)
             if prueba:
                 segunda_validacion(prueba)
-            sleep(5)
+            print('\nPresione ENTER para continuar.')
+            input()
 
 
 if __name__ == '__main__':
