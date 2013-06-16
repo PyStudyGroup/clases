@@ -101,8 +101,7 @@ def main():
             prueba = primera_validacion(cadena_in)
             if prueba:
                 segunda_validacion(prueba)
-            print('\nPresione ENTER para continuar.')
-            input()
+            input('\nPresione ENTER para continuar.')
 
 
 if __name__ == '__main__':
