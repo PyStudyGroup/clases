@@ -1,0 +1,8 @@
+Tetamanti,Ricardo,55238510,tetamanti.ricardo@city.com,Talcahuano 3070
+Arruda,Gimena,78432100,arruda.gimena@city.com,Belgrano 342
+Arguiñaz,Beto,66345111,beto.arguinaz@city.com,República 786
+Herrera,Patricia,23217867,herrera.patricia@city.com,Balcarce 1502 3B
+Giuseppe,Antonela,78237654,giuseppe.antonela@city.com,Av. Paulista 45
+Garnero,Julia,90657734,garrido.julia@city.com,Planalto 457
+Sepúlveda,Rafael,90031218,sepulveda.rafael@city.com,Itamaraty 456
+Arroyo,Manuel,78451209,arroyo.manuel@city.com,Rua Liberdade 23
