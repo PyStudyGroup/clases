@@ -240,9 +240,10 @@ def main():
     # Si el archivo no existe lo crea.
     if not os.path.isfile(archivo):
         escribir_archivo([], archivo)
-
+        agenda = {}
     # Cargar los datos del archivo 'datos.txt' en el diccionario 'agenda'.
-    agenda = cargar_datos(archivo)
+    else:
+        agenda = cargar_datos(archivo)
 
     # Llamar al menú principal.
     opcion = ""
