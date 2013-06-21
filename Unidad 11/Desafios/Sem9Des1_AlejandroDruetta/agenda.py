@@ -88,8 +88,7 @@ def agregar_contacto(agenda, archivo):
         agenda[contacto] = [telefono, email, direccion]
         # Escribir datos en el archivo.
         apellido, nombre = contacto
-        linea = apellido + "," + nombre + "," + telefono + "," + email + "," \
-                + direccion + "\n"
+        linea = ",".join([apellido, nombre, telefono, email, direccion]) + "\n"
         agregar_linea(linea, archivo)
 
 def modificar_contacto(agenda, archivo):
@@ -190,7 +189,7 @@ def cargar_datos(archivo):
     with open(archivo, 'r') as datos:
         for linea in datos:
             # Crear una lista con los datos de cada línea.
-            registro = linea.rstrip().split(",")
+            registro = linea.rstrip().split(", ")
             # Unir datos Apellido y Nombre para formar una tupla 'contacto'.
             contacto = (registro[0], registro[1])
             # Crear diccionario con la tupla como clave y el resto de la lista
@@ -208,13 +207,12 @@ def volcar_datos(agenda, archivo):
 
     for clave in agenda:
         apellido, nombre = clave
-        telefono = agenda[clave][0]
-        email = agenda[clave][1]
-        direccion = agenda[clave][2]
-        linea = apellido + "," + nombre + "," + telefono + "," + email \
-                + "," + direccion + "\n"
+        telefono, email, direccion = agenda[clave]
+        linea = ", ".join([apellido, nombre, telefono, email, direccion]) + "\n"
         lista.append(linea)
-        escribir_archivo(lista, archivo)
+    
+    lista.sort()
+    escribir_archivo(lista, archivo)
 
 def escribir_archivo(lista, archivo):
     """ Crea archivo si no existe o escribe una lista en el archivo. """
